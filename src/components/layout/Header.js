@@ -2,6 +2,7 @@
 import Link from "next/link";
 import {signOut, useSession} from "next-auth/react";
 
+
 export default function Header(){
     const session = useSession();
     console.log(session);
@@ -12,7 +13,7 @@ export default function Header(){
     if(userName && userName.includes(' ')) {
         userName = userName.split(' ')[0];
     }
-    if(status=="authenticated"){
+    if(status==="authenticated"){
     return (
         <header className="flex items-center justify-between">
             <nav className="flex items-center gap-8 text-gray-500 font-semibold">
