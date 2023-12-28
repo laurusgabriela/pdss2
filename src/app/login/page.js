@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {signIn} from "next-auth/react";
 
+
 export default function LoginPage(){
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,7 +13,7 @@ export default function LoginPage(){
         ev.preventDefault();
         setLoginInProgress(true);
 
-        await signIn('credentials', {email, password});
+        await signIn('credentials', {email, password, callbackUrl: '/'});
         setLoginInProgress(false);
     }
     return(
@@ -31,7 +32,8 @@ export default function LoginPage(){
                 <div className="my-4 text-center text-gray-500">
                     or login with provider
                 </div>
-                <button className="flex gap-4 justify-center">
+                <button type="button" onClick={() => signIn('google', {callbackUrl: '/'})}
+                        className="flex gap-4 justify-center">
                     <Image src={'/google_icon.png'} alt={''} width={20} height={20}/>
                     Login with Google</button>
                 <div className="text-center my-4 text-gray-500">Not having an account? {' '}
