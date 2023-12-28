@@ -34,6 +34,7 @@ export const authOptions = {
                 const passwordOk = user && bcrypt.compareSync(password, user.password);
 
                 if(passwordOk){
+                    //document.write("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
                     return user;
                 }
 
