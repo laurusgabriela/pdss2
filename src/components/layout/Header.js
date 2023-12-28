@@ -8,6 +8,7 @@ export default function Header(){
     const status = session?.status;
     const userData = session.data?.user;
     let userName =  userData?.name || userData?.email;
+    console.log(userName);
     if(userName && userName.includes(' ')) {
         userName = userName.split(' ')[0];
     }

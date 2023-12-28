@@ -5,11 +5,6 @@ const UserSchema = new Schema({
     email: {type: String, required: true, unique: true},
     password: {type: String},
     image:{type: String},
-    phone: {type:String},
-    city: {type:String},
-    postalCode: {type:String},
-    number: {type:String},
-    streetAddress: {type:String},
 
 } );
 
