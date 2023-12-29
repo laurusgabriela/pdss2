@@ -1,5 +1,5 @@
 'use client';
-import {UseProfile} from "@/components/UseProfile";
+import {useProfile} from "@/components/UseProfile";
 import UserTabs from "@/components/layout/UserTabs";
 import EditableImage from "@/components/layout/EditableImage";
 import {useState} from "react";
@@ -10,7 +10,7 @@ import Left from "@/components/icons/Left";
 import {redirect} from "next/navigation";
 
 export default function NewMenuItemPage(){
-    const {loading, data} = UseProfile();
+    const {loading, data} = useProfile();
     const [image, setImage] = useState('');
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');

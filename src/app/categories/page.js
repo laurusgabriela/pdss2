@@ -1,7 +1,7 @@
 'use client';
 import UserTabs from "@/components/layout/UserTabs";
 import {useEffect, useState} from "react";
-import {UseProfile} from "@/components/UseProfile";
+import {useProfile} from "@/components/UseProfile";
 import {toast} from "react-hot-toast";
 
 
@@ -9,7 +9,7 @@ export default function CategoriesPage(){
 
     const [categoryName, setCategoryName] = useState('');
     const [categories, setCategories] = useState('');
-    const {loading:profileLoading, data:profileData} = UseProfile();
+    const {loading:profileLoading, data:profileData} = useProfile();
     const [editedCategory, setEditedCategory] = useState(null);
 
     useEffect(() => {
@@ -83,7 +83,9 @@ export default function CategoriesPage(){
             </form>
             <div>
                 <h2 className="mt-8 text-sm text-gray-500">Edit category</h2>
-                {categories?.length > 0 && categories.map(c => (
+                {categories?.length > 0 && categories.map(c => {
+                    if(c.name!== ''){
+                        return(
                     <button
                         onClick={() => {
                             setEditedCategory(c);
@@ -92,7 +94,11 @@ export default function CategoriesPage(){
                         className="bg-gray-200 text-primary font-semibold rounded-xl p-2 px-4 flex gap-1 cursor-pointer mb-2">
                         <span>{c.name}</span>
                     </button>
-                ))
+                        );
+
+                    }
+                    return null;
+})
                 }
             </div>
         </section>
