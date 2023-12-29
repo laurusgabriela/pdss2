@@ -9,8 +9,10 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'gloverse.s3.amazonaws.com',
-            }
-        ]
+            },
+            
+        ],
+        domains: ["gloverseapp.s3.amazonaws.com"]
     }
 }
 
