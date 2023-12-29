@@ -53,11 +53,14 @@ export default function MenuItemForm({onSubmit,menuItem}) {
             onChange={ev => setDescription(ev.target.value)}
           />
           <label>Category</label>
-          <select value={category} onChange={ev => setCategory(ev.target.value)}>
-            {categories?.length > 0 && categories.map(c => (
-              <option key={c._id} value={c._id}>{c.name}</option>
-            ))}
-          </select>
+          <div type="button" className="grow">
+            <select value={category} onChange={ev => setCategory(ev.target.value)}>
+              {categories?.length > 0 && categories.map(c => (
+                  <option key={c._id} value={c._id}>{c.name}</option>
+              ))}
+            </select>
+          </div>
+
           <label>Base price</label>
           <input
             type="text"
