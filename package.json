@@ -18,7 +18,8 @@
     "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
-    "uniqid": "^5.4.0"
+    "uniqid": "^5.4.0",
+    "yarn": "^1.22.21"
   },
   "devDependencies": {
     "@types/node": "20.10.0",
