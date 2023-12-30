@@ -118,7 +118,7 @@ export default function CartPage() {
                             addressProps={address}
                             setAddressProp={handleAddressChange}
                         />
-                        <button type="submit">Pay ${subtotal+5}</button>
+                        <button type="submit">Pay {subtotal+15} RON</button>
                     </form>
                 </div>
             </div>
