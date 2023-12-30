@@ -8,11 +8,30 @@ import {useProfile} from "@/components/UseProfile";
 import Image from "next/image";
 import {useContext, useEffect, useState} from "react";
 import toast from "react-hot-toast";
+import { init } from 'emailjs-com';
+import emailjs from "emailjs-com"
+import {useSession} from "next-auth/react";
+
+init(process.env.EMAILJS_PK);
 
 export default function CartPage() {
+    const session = useSession();
     const {cartProducts,removeCartProduct} = useContext(CartContext);
     const [address, setAddress] = useState({});
     const {data:profileData} = useProfile();
+    const [user, setUser] = useState(null);
+  const {status} = session;
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      fetch('/api/profile').then(response => {
+        response.json().then(data => {
+          setUser(data);
+          
+        })
+      });
+    }
+  }, [session, status]);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -58,6 +77,7 @@ export default function CartPage() {
             }).then(async (response) => {
                 if (response.ok) {
                     resolve();
+                   
                     window.location = await response.json();
                 } else {
                     reject();
@@ -79,6 +99,24 @@ export default function CartPage() {
                 <p className="mt-4">Your shopping cart is empty 😔</p>
             </section>
         );
+    }
+
+    function sendEmail() {
+        const templateParams = {
+        
+            email: user.email,
+            message: 'Payment made',
+            contact_number: Math.random() * 100000 | 0,
+        };
+    
+        emailjs.send('contact_service1', 'contact_form', templateParams, "GYqmdW7k8hULCJTyi")
+            .then(function(response) {
+                console.log('Email sent!', response);
+                toast.success('Payment successful! Email sent.');
+            }, function(error) {
+                console.error('Email failed to send...', error);
+                toast.error('Payment successful, but email failed to send.');
+            });
     }
 
     return (
@@ -118,7 +156,7 @@ export default function CartPage() {
                             addressProps={address}
                             setAddressProp={handleAddressChange}
                         />
-                        <button type="submit">Pay {subtotal+15} RON</button>
+                        <button type="submit" onClick={ sendEmail}>Pay {subtotal+15} RON</button>
                     </form>
                 </div>
             </div>
