@@ -45,7 +45,7 @@ export default function CartPage() {
     }
     async function proceedToCheckout(ev) {
         ev.preventDefault();
-        // address and shopping cart products
+       
 
         const promise = new Promise((resolve, reject) => {
             fetch('/api/checkout', {
@@ -91,9 +91,9 @@ export default function CartPage() {
                     {cartProducts?.length === 0 && (
                         <div>No products in your shopping cart</div>
                     )}
-                    {cartProducts?.length > 0 && cartProducts.map((product, index) => (
+                    {cartProducts?.length > 0 && cartProducts.map((product) => (
                         <CartProduct
-                            key={index}
+                            key={product._id}
                             product={product}
                             onRemove={removeCartProduct}
                         />

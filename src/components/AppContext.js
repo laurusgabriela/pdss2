@@ -34,15 +34,22 @@ export function AppProvider({children}) {
         saveCartProductsToLocalStorage([]);
     }
 
-    function removeCartProduct(indexToRemove) {
+    function removeCartProduct(productId) {
+        console.log('Product ID to remove:', productId);
+        console.log('Before removal:', cartProducts);
+    
         setCartProducts(prevCartProducts => {
-            const newCartProducts = prevCartProducts
-                .filter((v,index) => index !== indexToRemove);
+            const newCartProducts = prevCartProducts.filter(product => product._id !== productId);
+    
+            console.log('After removal:', newCartProducts);
+    
             saveCartProductsToLocalStorage(newCartProducts);
             return newCartProducts;
         });
+    
         toast.success('Product removed');
     }
+    
 
     function saveCartProductsToLocalStorage(cartProducts) {
         if (ls) {
