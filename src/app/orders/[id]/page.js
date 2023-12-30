@@ -50,7 +50,7 @@ export default function OrderPage() {
             {order && (
                 <div className="grid md:grid-cols-2 md:gap-16">
                     <div>
-                        {order.cartProducts.map(product => (
+                        {order?.cartProducts.map(product => (
                             <CartProduct key={product._id} product={product} />
                         ))}
                         <div className="text-right py-2 text-gray-500">

@@ -20,7 +20,7 @@ export default function CartProduct({product,onRemove}) {
                 {product.extras?.length > 0 && (
                     <div className="text-sm text-gray-500">
                         {product.extras.map(extra => (
-                            <div key={extra.name}>{extra.name} {extra.price} RON</div>
+                            <div key={extra.name}>{extra.name} ${extra.price}</div>
                         ))}
                     </div>
                 )}
@@ -32,7 +32,7 @@ export default function CartProduct({product,onRemove}) {
                 <div className="ml-2">
                     <button
                         type="button"
-                        onClick={() => onRemove(index)}
+                        onClick={() => onRemove(product._id)}
                         className="p-2">
                         <Trash />
                     </button>
