@@ -12,9 +12,7 @@ export default function Hero(){
                     <button className="bg-primary flex items-center gap-2 text-white px-6 py-2 rounded-full">
                         Order now <Right />
                     </button>
-                    <button className="flex items-center border-0 gap-2 py-2 text-center rounded-full text-gray-600 font-semibold">
-                        Learn more <Right />
-                    </button>
+                    
                 </div>
             </div>
             <div className="relative w-full h-full">
