@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import {isAdmin} from "@/app/api/isAdmin";
 
 export async function GET() {
-  mongoose.connect(process.env.MONGO_URL);
+  await mongoose.connect(process.env.MONGO_URL);
   if (await isAdmin()) {
     const users = await User.find();
     return Response.json(users);

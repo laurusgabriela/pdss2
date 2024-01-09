@@ -3,11 +3,12 @@
 import mongoose from "mongoose";
 import {getServerSession} from "next-auth";
 import {Order} from "@/app/models/Order";
-import {isAdmin} from "@/app/api/isAdmin";
 import {authOptions} from "@/app/api/auth/[...nextauth]/options";
+import {isAdmin} from "@/app/api/isAdmin";
+
 
 export async function GET(req) {
-    mongoose.connect(process.env.MONGO_URL);
+    await mongoose.connect(process.env.MONGO_URL);
 
     const session = await getServerSession(authOptions);
     const userEmail = session?.user?.email;
