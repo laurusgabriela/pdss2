@@ -17,7 +17,7 @@ export default function Home() {
           <p>
             I am a results-oriented professional with a strong
             background in marketing and project management, holding a
-            Bachelor's degree in Business Administration. Experienced in
+            Bachelor degree in Business Administration. Experienced in
             developing and executing successful marketing campaigns, I have
             consistently contributed to increased brand visibility and customer
             engagement. Proficient in leveraging digital marketing channels,
@@ -37,11 +37,11 @@ export default function Home() {
       </section>
       <section className="text-center my-8" id="contact">
         <SectionHeaders
-          subHeader={'Don&apos;t hesitate'}
+          subHeader={'Do not hesitate'}
           mainHeader={'Contact us'}
         />
         <div className="mt-8">
-          <a className="text-4xl text-primary" href="tel:+40741251576">+40741251576</a>
+          <a className="text-4xl text-primary" href="tel:+40767251576">+40745251578</a>
         </div>
       </section>
 
